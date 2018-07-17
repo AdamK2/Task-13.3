@@ -11,14 +11,19 @@ process.stdin.on('readable', function() {
     if (input !== null) {
 		// Metoda .trim(). Dzięki niej pozbywamy się wszystkich białych znaków z przodu i za tekstem.
         var instruction = input.toString().trim();
-		// Instrukcja warunkowa: jesli uzytkownik wpisze "/exit", nastepuje wyswietlenie "Quitting app!" i zakonczenie dzialania programu.
-        if (instruction === '/exit') {
+		
+		// Jesli zytkownik wpisze "node", nastapi Wyswietlenie informacji o wersji Node, z której korzysta użytkownik i program dalej dziala.
+		if (instruction === 'node') {
+            process.stdout.write('You use version ' + process.versions.node + ' of Node.\n');	       
+		}
+		// Jesli uzytkownik wpisze "/exit", nastepuje wyswietlenie "Quitting app!" i zakonczenie dzialania programu.
+        else if (instruction === '/exit') {
             process.stdout.write('Quitting app!\n');
 			// Wyswietlenie informacji o wersji Node, z której korzysta użytkownik.
-			process.stdout.write('You use version ' + process.versions.node + ' of Node.');			
-            process.exit();
-        } else {
-			// Jesli uzytkownik wpisze cos innego niz "/exit", nastepuje wyswietlenie "Wrong instruction!" i program dalej dziala.
+			process.exit();		
+		}
+		// Jesli uzytkownik wpisze cos innego niz "/exit", nastepuje wyswietlenie "Wrong instruction!" i program dalej dziala.
+        else {			
             process.stderr.write('Wrong instruction!\n');
         }
     }
