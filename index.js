@@ -22,7 +22,7 @@ process.stdin.on('readable', function() {
             case '/node':
                 process.stdout.write('You use version ' + process.versions.node + ' of Node.\n');
                 break;
-			// Wyswietlenie informacji o języku systemowym użytkownika [nie działa!]
+			// Wyswietlenie informacji o języku systemowym użytkownika (w systemie Windows wyswietla "undefined")
 			case '/lang':
                 process.stdout.write(process.env.lang);
                 break;
